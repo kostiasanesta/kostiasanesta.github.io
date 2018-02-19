@@ -17,20 +17,17 @@
      // API initialization succeeded 
      // Your code here 
 	 alert('vk initialized');
-	 VK.callMethod("
-	 VK.callMethod("showSettingsBox", 8214);
-	VK.api("wall.post", {"message": "Hello!"}, function (data) {
-		alert(data.response.owner_id);
-});
 	 
-  }, function() { 
-     // API initialization failed 
-     // Can reload page here 
-}, '5.73'); 
+	 VK.callMethod("showSettingsBox", 8214);
+
 
 VK.addCallback('onSettingsChanged', function(){
 	alert("ZAME4ATELNO");
 });	
+}, function() { 
+// API initialization failed 
+// Can reload page here 
+}, '5.73'); 
 </script>
   </head>
   <body>
