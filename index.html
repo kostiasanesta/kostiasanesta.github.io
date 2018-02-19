@@ -17,61 +17,12 @@
      // API initialization succeeded 
      // Your code here 
 	 alert('vk initialized');
-	 VK.addCallback('onWindowBlur', function(settings){UnityHide();});
-	 VK.addCallBack('onWidowFocus', function(settings){UnityShow();});
+	 
   }, function() { 
      // API initialization failed 
      // Can reload page here 
 }, '5.73'); 
 	
-	function GetUnity(){
-		return gameInstance.getUnity();
-	}
-	
-	function UnityShow(){
-		GetUnity().style.visibility = 'visible';
-	}
-	function UnityHide(){
-	
-		GetUnity().style.visibility = 'hidden';
-	}
-	function SendToPlayer(func, what){
-		
-		GetUnity().SendMessage("SocialManager", func, what);
-	}
-	
-	function GetParams(){
-	alert(document.location.href+'');
-		SendToPlayer("RecvParams", document.location.href+'');
-	}
-	
-	function GetProfile(uid){
-		VK.api('users.get', {uids: uid, fields: 'first_name, photo, last_name'}, function(data){
-		
-		var Fname ="";
-		var Lname ="";
-		var Photo ="";
-		
-		if(data.response){
-			Fname = data.response[0]['first_name'];
-			Lname = data.response[0]['last_name'];
-			Photo = data.response[0]['photo'];
-			
-			var Profile = [uid, Fname, Lname, Photo];
-			
-			SendToPlayer("OnGetPlayer",""+Profile
-		}
-	
-	});
-	}
-	
-	function PostToWall(text){
-		alert('Hello! PostToWall')
-	
-	}
-	function ShowInvite(){
-		VK.callMethod("showInviteBox");
-	}
 	
 </script>
 
