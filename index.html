@@ -92,8 +92,8 @@
 //                Photo = data.response[0]['photo'];
 
 //                var Profile = [uid, Fname, Lname, Photo];
-
-                SendToPlayer("OnGetPlayer", data);
+                var dataObj = JSON.parse(data.response)
+                SendToPlayer("OnGetPlayer", dataObj);
             }
         })
     }
