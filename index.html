@@ -30,7 +30,7 @@
         VK.init(function () {
             // API initialization succeeded 
             // Your code here 
-            alert('vk initialized');
+         
 
 
             VK.callMethod("showSettingsBox", 8214);
@@ -48,7 +48,7 @@
     function GetParams() {
         VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
             if (data.response) {
-                SendMessage('Main Camera', 'Cry', data.response.post_id);
+                SendMessage('MainCamera', 'Cry', data.response.post_id);
             }
         })
     }
