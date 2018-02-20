@@ -82,18 +82,18 @@
     function GetProfile(uid) {
         VK.api('users.get', {uids: uid, fields: 'first_name, photo, last_name'}, function (data) {
 
-//            var Fname = "";
-//            var Lname = "";
-//            var Photo = "";
-//
-            if (data.response) {
-//                Fname = data.response[0]['first_name'];
-//                Lname = data.response[0]['last_name'];
-//                Photo = data.response[0]['photo'];
+            var Fname = "";
+            var Lname = "";
+            var Photo = "";
 
-//                var Profile = [uid, Fname, Lname, Photo];
-                var dataObj = JSON.parse(data.response)
-                SendToPlayer("OnGetPlayer", dataObj);
+            if (data.response) {
+                Fname = data.response[0]['first_name'];
+                Lname = data.response[0]['last_name'];
+                Photo = data.response[0]['photo'];
+
+                var Profile = [uid, Fname, Lname, Photo];
+//                var dataObj = JSON.parse(data.response)
+                SendToPlayer("OnGetPlayer", Profile);
             }
         })
     }
