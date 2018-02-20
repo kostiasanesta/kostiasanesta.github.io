@@ -12,37 +12,7 @@
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Builds.json", {onProgress: UnityProgress});
     </script>
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-    <script type="text/javascript">
-        VK.init(function () {
-            // API initialization succeeded 
-            // Your code here 
-            alert('vk initialized');
 
-
-            VK.callMethod("showSettingsBox", 8214);
-
-
-            VK.addCallback('onSettingsChanged', function () {
-                SendMessage('Main Camera', 'Cry', 'HELLO!');
-            });
-        }, function () {
-// API initialization failed 
-// Can reload page here 
-        }, '5.73');
-
-        function GetParams() {
-            VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
-                if (data.response) {
-                    SendMessage('Main Camera', 'OnGetParam', data.response.post_id);
-                }
-            })
-        }
-
-        function MessageAlert() {
-            alert('HELLO MY DIAR FRIEND!')
-        }
-
-    </script>
 </head>
 <body>
 <div class="webgl-content">
@@ -53,5 +23,37 @@
         <div class="title">SocialTestProject</div>
     </div>
 </div>
+<script type="text/javascript">
+    VK.init(function () {
+        // API initialization succeeded 
+        // Your code here 
+        alert('vk initialized');
+
+
+        VK.callMethod("showSettingsBox", 8214);
+
+
+        VK.addCallback('onSettingsChanged', function () {
+            SendMessage('Main Camera', 'Cry', 'HELLO!');
+        });
+    }, function () {
+// API initialization failed 
+// Can reload page here 
+    }, '5.73');
+
+    function GetParams() {
+        VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
+            if (data.response) {
+                SendMessage('Main Camera', 'OnGetParam', data.response.post_id);
+            }
+        })
+    }
+
+    function MessageAlert() {
+        alert('HELLO MY DIAR FRIEND!')
+    }
+
+
+</script>
 </body>
 </html>
