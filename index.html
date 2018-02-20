@@ -28,33 +28,83 @@
 
 
         VK.init(function () {
-            // API initialization succeeded 
-            // Your code here 
-            alert('vk initialized');
+                // API initialization succeeded 
+                // Your code here 
+                alert('vk initialized');
 
 
-            VK.callMethod("showSettingsBox", 8214);
+                VK.callMethod("showSettingsBox", 8214);
 
 
-            VK.addCallback('onSettingsChanged', function () {
+//                VK.addCallback('onWindowBlur', function (settings) {
+//                    
+//                });
+//
+//                VK.addCallback('onWindowFocus', function (settings) {
+//                    
+//                });
 
-            });
-        }, function () {
+            }
+
+            ,
+
+            function () {
 // API initialization failed 
 // Can reload page here 
-        }, '5.73');
+            }
+
+            ,
+            '5.73'
+        );
     }
 
+
     function GetParams() {
-        VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
-            if (data.response) {
-                SendMessage('Main Camera', 'Cry', data.response.post_id);
-            }
-        })
+
+
+//        VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
+//            if (data.response) {
+//                gameInstance.SendMessage('Main Camera', 'Cry', data.response.post_id);
+//            }
+//        })
+        alert(document.location.href + '');
+        SendToPlayer("RecvParams", document.location.href + '');
+    }
+
+    function SendToPlayer(func, what) {
+        gameInstance.SendMessage("SocialManager", func, what);
     }
 
     function MessageAlert() {
         alert('HELLO MY DIAR FRIEND!')
+    }
+
+    function GetProfile(uid) {
+        VK.api('users.get', {uids: uid, fields: 'first_name, photo, last_name'}, function (data) {
+
+            var Fname = "";
+            var Lname = "";
+            var Photo = "";
+
+            if (data.response) {
+                Fname = data.response[0]['first_name'];
+                Lname = data.response[0]['last_name'];
+                Photo = data.response[0]['photo'];
+
+                var Profile = [uid, Fname, Lname, Photo];
+                SendToPlayer("OnGetPlayer", "" + Profile);
+            }
+        })
+    }
+
+    function PostToWall(text) {
+        VK.api('wall.post', {message: text}, function (data) {
+
+        })
+    }
+
+    function ShowInvite() {
+        VK.callMethod("shiwInviteBox");
     }
 
 </script>
