@@ -12,7 +12,19 @@
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Builds.json", {onProgress: UnityProgress});
     </script>
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-    <script type="text/javascript">
+
+</head>
+<body>
+<div class="webgl-content">
+    <div id="gameContainer" style="width: 960px; height: 600px"></div>
+    <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">SocialTestProject</div>
+    </div>
+</div>
+<script type="text/javascript">
+    function VKInit() {
 
 
         VK.init(function () {
@@ -31,32 +43,20 @@
 // API initialization failed 
 // Can reload page here 
         }, '5.73');
+    }
 
+    function GetParams() {
+        VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
+            if (data.response) {
+                SendMessage('MainCamera', 'Cry', data.response.post_id);
+            }
+        })
+    }
 
-        function GetParams() {
-            VK.api("wall.post", {"message": "PRIVET DRYJIWE!"}, function (data) {
-                if (data.response) {
-                    SendMessage('MainCamera', 'OnGetParam', data.response.post_id);
-                }
-            })
-        }
+    function MessageAlert() {
+        alert('HELLO MY DIAR FRIEND!')
+    }
 
-        function MessageAlert() {
-            alert('HELLO MY DIAR FRIEND!')
-            SendMessage('MainCamera', 'Cry', 'HELLO!');
-        }
-
-    </script>
-</head>
-<body>
-<div class="webgl-content">
-    <div id="gameContainer" style="width: 960px; height: 600px"></div>
-    <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">SocialTestProject</div>
-    </div>
-</div>
-
+</script>
 </body>
 </html>
